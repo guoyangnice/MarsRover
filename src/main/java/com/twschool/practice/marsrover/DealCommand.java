@@ -7,9 +7,9 @@ import java.util.List;
 public class DealCommand implements CommandInterface {
 
     private MarsRoverPosition marsRoverPosition;
-    private boolean backStatus;
+    private boolean backStatus = false;
     private List<String> backList = new ArrayList<>(1);
-    private boolean forwardStatus;
+    private boolean forwardStatus = true;
 
     public DealCommand(MarsRoverPosition marsRoverPosition){
         this.marsRoverPosition = marsRoverPosition;
@@ -25,7 +25,7 @@ public class DealCommand implements CommandInterface {
         }else if(command.equals(Command.BACK.getShortName()) && backList.size() > 0){
             backStatus = false;
             forwardStatus = true;
-            backList = new ArrayList<>(1);
+            backList.clear();
         }
 
         if(backStatus && Command.MOVE.getShortName().equals(command)) {
