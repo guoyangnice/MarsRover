@@ -2,7 +2,7 @@ package com.twschool.practice.marsrover;
 
 
 public class MarsRoverPosition {
-    private Direction direction;
+    public Direction direction;
 
     public int coordinatesX;
     public int coordinatesY;
@@ -23,27 +23,6 @@ public class MarsRoverPosition {
 
     public String getDirectionShortName() {
         return direction.getShortName();
-    }
-
-    public void move() {
-        String directionShortName = direction.getShortName();
-        if (directionShortName.equals(Direction.NORTH.getShortName())) {
-            this.coordinatesY++;
-        } else if (directionShortName.equals(Direction.EAST.getShortName())) {
-            this.coordinatesX++;
-        } else if (directionShortName.equals(Direction.WEST.getShortName())) {
-            this.coordinatesX--;
-        } else if (directionShortName.equals(Direction.SOUTH.getShortName())) {
-            this.coordinatesY--;
-        }
-    }
-
-    public void turnLeft() {
-        direction = direction.leftDirection();
-    }
-
-    public void turnRight() {
-        direction = direction.rightDirection();
     }
 
 }
