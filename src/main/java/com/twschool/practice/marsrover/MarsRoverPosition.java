@@ -23,7 +23,16 @@ public class MarsRoverPosition {
     }
 
     public void move() {
-        coordinates.moveToward(direction.getShortName());
+        String directionShortName = direction.getShortName();
+        if (directionShortName.equals(Direction.NORTH.getShortName())) {
+            coordinates.coordinatesY++;
+        } else if (directionShortName.equals(Direction.EAST.getShortName())) {
+            coordinates.coordinatesX++;
+        } else if (directionShortName.equals(Direction.WEST.getShortName())) {
+            coordinates.coordinatesX--;
+        } else if (directionShortName.equals(Direction.SOUTH.getShortName())) {
+            coordinates.coordinatesY--;
+        }
     }
 
     public void turnLeft() {
