@@ -8,6 +8,7 @@ public class DealCommand implements CommandInterface {
 
     private MarsRoverPosition marsRoverPosition;
     private boolean backStatus;
+    private List<String> backList = new ArrayList<>(1);
     private boolean forwardStatus;
 
     public DealCommand(MarsRoverPosition marsRoverPosition){
@@ -17,9 +18,14 @@ public class DealCommand implements CommandInterface {
     @Override
     public void receiveSingleCommand(String command) {
 
-        if(command.equals(Command.BACK.getShortName())){
+        if(command.equals(Command.BACK.getShortName()) && backList.size() == 0){
             backStatus = true;
             forwardStatus = false;
+            backList.add(command);
+        }else if(command.equals(Command.BACK.getShortName()) && backList.size() > 0){
+            backStatus = false;
+            forwardStatus = true;
+            backList = new ArrayList<>(1);
         }
 
         if(backStatus && Command.MOVE.getShortName().equals(command)) {
