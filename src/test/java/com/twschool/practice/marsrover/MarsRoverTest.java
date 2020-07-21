@@ -178,6 +178,17 @@ public class MarsRoverTest {
     }
 
     @Test
+    public void should_return_x_0_y_1_N_when_receive_FL_command_give_mars_rover_with_init_place_x_0_y_0_N() {
+        MarsRover marsRover = new MarsRover(new MarsRoverPosition(0 ,0 , "N"));
+
+        MarsRoverPosition marsRoverPosition = marsRover.receive("FL");
+
+        assertThat(marsRoverPosition.getCoordinatesX(), is(0));
+        assertThat(marsRoverPosition.getCoordinatesY(), is(1));
+        assertThat(marsRoverPosition.getDirectionShortName(), is("W"));
+    }
+
+    @Test
     public void should_return_x_0_y_f2_N_when_receive_FMFM_command_give_mars_rover_with_init_place_x_0_y_0_N() {
         MarsRover marsRover = new MarsRover(new MarsRoverPosition(0 ,0 , "N"));
 
