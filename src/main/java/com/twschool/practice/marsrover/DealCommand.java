@@ -30,7 +30,7 @@ public class DealCommand implements CommandInterface {
             backList.clear();
         }
 
-        if(backStatus && Command.MOVE.getShortName().equals(command)) {
+        if(backStatus && Command.MOVE.getShortName().equals(command) && spaceList.size() == 0) {
             String directionShortName = marsRoverPosition.direction.getShortName();
             if (directionShortName.equals(Direction.NORTH.getShortName())) {
                 marsRoverPosition.coordinatesY--;
