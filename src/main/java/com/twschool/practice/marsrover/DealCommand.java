@@ -89,6 +89,7 @@ public class DealCommand implements CommandInterface {
                 marsRoverPosition.coordinatesY+=2;
             }
         }
+        
 
         if (Command.TURN_LEFT.getShortName().equals(command)) {
             marsRoverPosition.direction = marsRoverPosition.direction.leftDirection();
