@@ -1,10 +1,14 @@
 package com.twschool.practice.marsrover;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DealCommand implements CommandInterface {
 
     private MarsRoverPosition marsRoverPosition;
+    private boolean backStatus;
+    private boolean forwardStatus;
 
     public DealCommand(MarsRoverPosition marsRoverPosition){
         this.marsRoverPosition = marsRoverPosition;
@@ -12,7 +16,26 @@ public class DealCommand implements CommandInterface {
 
     @Override
     public void receiveSingleCommand(String command) {
-        if (Command.MOVE.getShortName().equals(command)) {
+
+        if(command.equals(Command.BACK.getShortName())){
+            backStatus = true;
+            forwardStatus = false;
+        }
+
+        if(backStatus && Command.MOVE.getShortName().equals(command)) {
+                String directionShortName = marsRoverPosition.direction.getShortName();
+                if (directionShortName.equals(Direction.NORTH.getShortName())) {
+                    marsRoverPosition.coordinatesY--;
+                } else if (directionShortName.equals(Direction.EAST.getShortName())) {
+                    marsRoverPosition.coordinatesX--;
+                } else if (directionShortName.equals(Direction.WEST.getShortName())) {
+                    marsRoverPosition.coordinatesX++;
+                } else if (directionShortName.equals(Direction.SOUTH.getShortName())) {
+                    marsRoverPosition.coordinatesY++;
+                }
+        }
+
+        if (forwardStatus && Command.MOVE.getShortName().equals(command)) {
             String directionShortName = marsRoverPosition.direction.getShortName();
             if (directionShortName.equals(Direction.NORTH.getShortName())) {
                 marsRoverPosition.coordinatesY++;
@@ -29,20 +52,6 @@ public class DealCommand implements CommandInterface {
         }
         if (Command.TURN_RIGHT.getShortName().equals(command)) {
             marsRoverPosition.direction = marsRoverPosition.direction.rightDirection();
-        }
-        if(Command.BACK.getShortName().equals(command)){
-            if(Command.MOVE.getShortName().equals(command)){
-                String directionShortName = marsRoverPosition.direction.getShortName();
-                if (directionShortName.equals(Direction.NORTH.getShortName())) {
-                    marsRoverPosition.coordinatesY--;
-                } else if (directionShortName.equals(Direction.EAST.getShortName())) {
-                    marsRoverPosition.coordinatesX--;
-                } else if (directionShortName.equals(Direction.WEST.getShortName())) {
-                    marsRoverPosition.coordinatesX++;
-                } else if (directionShortName.equals(Direction.SOUTH.getShortName())) {
-                    marsRoverPosition.coordinatesY++;
-                }
-            }
         }
     }
 
