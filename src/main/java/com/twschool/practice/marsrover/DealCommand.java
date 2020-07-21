@@ -43,7 +43,7 @@ public class DealCommand implements CommandInterface {
             }
         }
 
-        if (forwardStatus && Command.MOVE.getShortName().equals(command)) {
+        if (forwardStatus && Command.MOVE.getShortName().equals(command) && spaceList.size() == 0) {
             String directionShortName = marsRoverPosition.direction.getShortName();
             if (directionShortName.equals(Direction.NORTH.getShortName())) {
                 marsRoverPosition.coordinatesY++;
@@ -88,10 +88,6 @@ public class DealCommand implements CommandInterface {
             } else if (directionShortName.equals(Direction.SOUTH.getShortName())) {
                 marsRoverPosition.coordinatesY+=2;
             }
-        }
-
-        if(spaceStatus && Command.MOVE.getShortName().equals(command)){
-
         }
 
         if (Command.TURN_LEFT.getShortName().equals(command)) {
