@@ -1,7 +1,7 @@
 package com.twschool.practice.marsrover;
 
 public enum Command {
-    MOVE("M"), TURN_LEFT("L"), TURN_RIGHT("R");
+    MOVE("M"), TURN_LEFT("L"), TURN_RIGHT("R"),BACK("B");
 
     private String shortName;
 

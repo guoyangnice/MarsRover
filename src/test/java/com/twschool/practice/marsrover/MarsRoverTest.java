@@ -112,6 +112,16 @@ public class MarsRoverTest {
         assertThat(marsRoverPosition.getDirectionShortName(), is("S"));
     }
 
+    //whenB
+    @Test
+    public void should_return_N_when_receive_B_command_give_mars_rover_with_init_place_x_0_y_0_N() {
+        MarsRover marsRover = new MarsRover(new MarsRoverPosition(0 ,0 , "N"));
+
+        MarsRoverPosition marsRoverPosition = marsRover.receive("B");
+
+        assertThat(marsRoverPosition.getDirectionShortName(), is("N"));
+    }
+
     @Test
     public void should_return_x_1_y_0_and_E_when_receive_M_command_give_mars_rover_with_init_place_x_0_y_0_E() {
         MarsRover marsRover = new MarsRover(new MarsRoverPosition(0 ,0 , "E"));
