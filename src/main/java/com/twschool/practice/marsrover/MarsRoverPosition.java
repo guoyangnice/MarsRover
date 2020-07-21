@@ -2,20 +2,23 @@ package com.twschool.practice.marsrover;
 
 
 public class MarsRoverPosition {
-    private Coordinates coordinates;
     private Direction direction;
 
-    public MarsRoverPosition(int coordinatesX, int coordinatesY, String direction) {
-        this.coordinates = new Coordinates(coordinatesX, coordinatesY);
-        this.direction = Direction.fromShortName(direction);
-    }
+    public int coordinatesX;
+    public int coordinatesY;
 
     public int getCoordinatesX() {
-        return coordinates.getCoordinatesX();
+        return coordinatesX;
     }
 
     public int getCoordinatesY() {
-        return coordinates.getCoordinatesY();
+        return coordinatesY;
+    }
+
+    public MarsRoverPosition(int coordinatesX, int coordinatesY, String direction) {
+        this.coordinatesX = coordinatesX;
+        this.coordinatesY = coordinatesY;
+        this.direction = Direction.fromShortName(direction);
     }
 
     public String getDirectionShortName() {
@@ -25,13 +28,13 @@ public class MarsRoverPosition {
     public void move() {
         String directionShortName = direction.getShortName();
         if (directionShortName.equals(Direction.NORTH.getShortName())) {
-            coordinates.coordinatesY++;
+            this.coordinatesY++;
         } else if (directionShortName.equals(Direction.EAST.getShortName())) {
-            coordinates.coordinatesX++;
+            this.coordinatesX++;
         } else if (directionShortName.equals(Direction.WEST.getShortName())) {
-            coordinates.coordinatesX--;
+            this.coordinatesX--;
         } else if (directionShortName.equals(Direction.SOUTH.getShortName())) {
-            coordinates.coordinatesY--;
+            this.coordinatesY--;
         }
     }
 
