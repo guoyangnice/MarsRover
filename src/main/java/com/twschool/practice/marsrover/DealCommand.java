@@ -103,6 +103,8 @@ public class DealCommand implements CommandInterface {
             }
         }
 
+        //右转同理，逻辑相同
+
         if (Command.TURN_LEFT.getShortName().equals(command)) {
             marsRoverPosition.direction = marsRoverPosition.direction.leftDirection();
         }
