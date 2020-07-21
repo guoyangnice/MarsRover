@@ -6,6 +6,18 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class MarsRoverTest {
+
+    @Test
+    public void should_return_x_0_y_1_and_N_when_receive_M_command_give_mars_rover_with_init_place_x_0_y_0_N() {
+        MarsRover marsRover = new MarsRover(new MarsRoverPosition(0 ,0 , "N"));
+
+        MarsRoverPosition marsRoverPosition = marsRover.receive("M");
+
+        assertThat(marsRoverPosition.getCoordinatesX(), is(0));
+        assertThat(marsRoverPosition.getCoordinatesY(), is(1));
+        assertThat(marsRoverPosition.getDirectionShortName(), is("N"));
+    }
+
     @Test
     public void should_return_x_0_y_2_and_N_when_receive_MM_command_give_mars_rover_with_init_place_x_0_y_0_N() {
         MarsRover marsRover = new MarsRover(new MarsRoverPosition(0 ,0 , "N"));
